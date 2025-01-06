@@ -15,12 +15,3 @@ public class CompanyUpdateDTO {
     private Long annualRevenue;
     private Long netProfit;
 }
-
-//private Long regNo;
-//private String name;
-//private Integer noOfEmployee;
-//@Column(name = "establishment_date")
-//private LocalDate estDate;
-//private Long annualRevenue;
-//private Long netProfit;
-//private String domain;
