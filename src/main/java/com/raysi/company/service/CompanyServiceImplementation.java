@@ -76,6 +76,21 @@ public class CompanyServiceImplementation implements CompanyService{
 
     @Override
     public void updateCompany(Long id, CompanyUpdateDTO companyUpdateDTO) {
+        Company existingCompany = companyRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("1101", "No Such Company Is Available With Regestration No: " + id));
+        try{
+            if (companyUpdateDTO.getName() != null) {
+                existingCompany.setName(companyUpdateDTO.getName());
+            }
+            if (companyUpdateDTO.getNetProfit() != null)
+                existingCompany.setNetProfit(companyUpdateDTO.getNetProfit());
+            if (companyUpdateDTO.getAnnualRevenue() != null)
+                existingCompany.setAnnualRevenue(companyUpdateDTO.getAnnualRevenue());
+            if (companyUpdateDTO.getNoOfEmployee() != null)
+                existingCompany.setNoOfEmployee(companyUpdateDTO.getNoOfEmployee());
+        }catch (Exception e){
+            throw new ResourceNotFoundException("1102", "Something went wrong in service layer");
+        }
 
     }
 }
